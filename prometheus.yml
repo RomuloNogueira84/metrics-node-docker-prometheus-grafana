@@ -1,0 +1,15 @@
+global:
+  # Configura o intervalo de coleta de métricas (scrape interval).
+  # Neste caso, o Prometheus irá coletar as métricas a cada 15 segundos.
+  scrape_interval: 15s
+
+scrape_configs:
+  # Nome do trabalho, apenas para identificação no Prometheus.
+  - job_name: 'hello-prometheus'
+
+    # Define os alvos de onde o Prometheus deve coletar as métricas.
+    static_configs:
+      # Neste caso, o Prometheus vai buscar métricas no endereço host.docker.internal:3000.
+      # Esse endereço aponta para o servidor Node.js rodando na porta 3000 dentro do container.
+      - targets: ['host.docker.internal:3000']
+
